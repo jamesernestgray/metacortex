@@ -1,0 +1,83 @@
+/* Global Clerk component overrides */
+
+/* Style the main Clerk card */
+.auth-container .cl-card {
+  background: white !important;
+  border-radius: 12px !important;
+  padding: 2rem !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2) !important;
+  border: none !important;
+}
+
+/* Remove duplicate styling from nested elements */
+.auth-container .cl-card .cl-card,
+.auth-container .cl-cardBox,
+.auth-container .cl-main {
+  box-shadow: none !important;
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+}
+
+/* Ensure proper form styling */
+.cl-formFieldRow {
+  margin-bottom: 1rem;
+}
+
+.cl-formButtonPrimary {
+  width: 100%;
+  margin-top: 1rem;
+  background-color: #667eea !important;
+  color: white !important;
+  border: none !important;
+  padding: 0.75rem 1.5rem !important;
+  border-radius: 6px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  transition: background-color 0.2s ease !important;
+}
+
+.cl-formButtonPrimary:hover {
+  background-color: #764ba2 !important;
+}
+
+.cl-formButtonPrimary:disabled {
+  opacity: 0.6 !important;
+  cursor: not-allowed !important;
+}
+
+/* Ensure text is visible */
+.auth-container .cl-card * {
+  color: inherit;
+}
+
+/* Fix the root box to not add extra styling */
+.auth-container .cl-rootBox {
+  background: transparent !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+/* Style all Clerk buttons properly */
+.auth-container button[class*="cl-formButton"] {
+  background-color: #667eea !important;
+  color: white !important;
+  border: none !important;
+  transition: background-color 0.2s ease !important;
+}
+
+.auth-container button[class*="cl-formButton"]:hover {
+  background-color: #764ba2 !important;
+}
+
+/* Secondary buttons */
+.auth-container .cl-formButtonSecondary {
+  background-color: transparent !important;
+  color: #667eea !important;
+  border: 1px solid #667eea !important;
+}
+
+.auth-container .cl-formButtonSecondary:hover {
+  background-color: #667eea !important;
+  color: white !important;
+}
