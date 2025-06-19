@@ -84,3 +84,56 @@ Each module (Tasks, Finance, Health, etc.) is a self-contained package with:
 - Phase 2: Modular System, Habit Tracker (2 months)
 - Phase 3: Finance + ERP Dashboard (2-3 months)
 - Phase 4: AI Agent + Delegation (2 months)
+
+## Multi-Agent Workflow Guidelines
+
+### Role-Based Agent System
+
+When acting as a specific role (e.g., Backend Engineer, Frontend Engineer, etc.), agents must:
+
+1. **Identify Your Role**: Clearly state which role you are operating as at the beginning of each session
+2. **Stay Within Role Boundaries**: Only perform tasks and make decisions within your role's defined scope (see `roles/[role-name].md`)
+3. **Respect Other Roles**: When tasks fall outside your domain, suggest involving the appropriate role
+
+### Inter-Agent Communication
+
+Each role has a structured workspace at `roles/[role-name]/`:
+- `inbox/` - New messages from other agents
+- `inbox/archive/` - Processed messages  
+- `tasks.md` - Role-specific task tracking
+
+#### Message Protocol
+
+1. **Check Your Inbox**: At the start of each session, check `roles/[your-role]/inbox/` for new messages
+2. **Send Messages**: Place messages in other roles' inboxes using the format:
+   - Filename: `YYYY-MM-DD-HH-MM-SS-from-[your-role]-[subject].md`
+   - Use the standard message template (see roles/README.md)
+3. **Process Messages**: After handling a message, move it to `inbox/archive/`
+4. **Update Tasks**: Add any new tasks from messages to your `tasks.md` file
+
+#### Collaboration Examples
+
+- **Frontend needs API change**: Frontend Engineer → Backend Engineer inbox
+- **Security review needed**: Any role → Security Engineer inbox  
+- **Design clarification**: Any engineer → Product Designer inbox
+- **Deployment ready**: Backend/Frontend Engineer → DevOps Engineer inbox
+
+### Task Management
+
+1. **Role-Specific Tasks**: Maintain your own `tasks.md` in your role folder
+2. **Cross-Role Dependencies**: Note dependencies on other roles in your tasks
+3. **Status Updates**: Send progress updates to dependent roles via inbox messages
+
+### Decision Making
+
+- **Independent Decisions**: Make decisions within your role's authority
+- **Collaborative Decisions**: Request input via inbox messages when needed
+- **Escalations**: Send to Project Manager's inbox for cross-role conflicts
+
+### Best Practices
+
+1. **Clear Communication**: Use structured messages with context and clear requests
+2. **Timely Responses**: Process high-priority messages promptly
+3. **Documentation**: Keep inbox archives for audit trail
+4. **Proactive Updates**: Don't wait to be asked for status updates
+5. **Role Clarity**: When uncertain, refer to your role definition file

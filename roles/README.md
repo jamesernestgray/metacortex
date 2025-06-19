@@ -49,6 +49,61 @@ When working with a Claude Code agent in a specific role:
 3. The agent will **respect role boundaries** and suggest involving other roles when needed
 4. The agent will maintain the **perspective and priorities** specific to that role
 
+### 📬 Inter-Agent Communication Protocol
+
+Each role has its own workspace with the following structure:
+```
+roles/[role-name]/
+├── inbox/          # New messages from other agents
+│   └── archive/    # Processed messages
+└── tasks.md        # Role-specific tasks
+```
+
+#### Sending Messages
+When an agent needs to communicate with another role:
+1. Create a markdown file in the target role's inbox: `roles/[target-role]/inbox/`
+2. Use the naming convention: `YYYY-MM-DD-HH-MM-SS-from-[sender-role]-[subject].md`
+3. Include clear context, requirements, and any deadlines
+
+#### Message Format
+```markdown
+# [Subject]
+
+**From:** [Sender Role]
+**To:** [Recipient Role]
+**Date:** [ISO 8601 timestamp]
+**Priority:** [High/Medium/Low]
+**Response Required By:** [Date/Time or N/A]
+
+## Context
+[Brief background information]
+
+## Request/Information
+[Detailed content of the message]
+
+## Expected Outcome
+[What you need from the recipient]
+
+## Attachments/References
+[Links to relevant files or documents]
+```
+
+#### Processing Messages
+Each agent should:
+1. Regularly check their `inbox/` folder
+2. Process messages based on priority and deadlines
+3. After processing, move the message to `inbox/archive/`
+4. Send acknowledgments or responses as new messages to the sender's inbox
+5. Update their `tasks.md` file with any new tasks from messages
+
+#### Message Types
+- **Task Request**: Request for work to be done
+- **Information Request**: Need for specific information
+- **Update Notification**: Status updates or changes
+- **Review Request**: Request for review or approval
+- **Collaboration Request**: Need for joint work
+- **Escalation**: Issues requiring attention
+
 ### Document Structure
 
 Each role document includes:

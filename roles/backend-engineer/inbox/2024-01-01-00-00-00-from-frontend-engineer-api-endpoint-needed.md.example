@@ -1,0 +1,56 @@
+# API Endpoint Needed for User Preferences
+
+**From:** Frontend Engineer
+**To:** Backend Engineer
+**Date:** 2024-01-01T00:00:00Z
+**Priority:** Medium
+**Response Required By:** 2024-01-03T17:00:00Z
+
+## Context
+We're implementing the user preferences feature for the settings page. The frontend components are ready, but we need an API endpoint to persist user preferences.
+
+## Request/Information
+Please create the following API endpoints:
+
+1. `GET /api/v1/users/me/preferences` - Retrieve current user's preferences
+2. `PATCH /api/v1/users/me/preferences` - Update user preferences (partial update)
+
+### Expected Request/Response Format:
+
+**GET Response:**
+```json
+{
+  "theme": "dark|light",
+  "language": "en",
+  "timezone": "America/New_York",
+  "notifications": {
+    "email": true,
+    "push": true,
+    "inApp": true
+  },
+  "displayOptions": {
+    "density": "comfortable|compact",
+    "showCompletedTasks": true
+  }
+}
+```
+
+**PATCH Request:**
+```json
+{
+  "theme": "dark",
+  "notifications": {
+    "email": false
+  }
+}
+```
+
+## Expected Outcome
+- API endpoints implemented with proper validation
+- Updated API documentation
+- Confirmation when ready for integration testing
+
+## Attachments/References
+- Frontend PR: #123 (implements preferences UI)
+- Design specs: `/docs/design/user-preferences.md`
+- Related ticket: TASK-456
